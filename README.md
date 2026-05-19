@@ -79,7 +79,7 @@ The app opens at `http://localhost:8501`.
 ## Usage
 
 ### Adding a new species
-1. Go to **Home** → fill in species name → upload your video → **Create**
+1. Go to **Home** → Keep your Video in Data/[SpeciesName] Folder → fill in species name → upload your video → **Create**
 2. Go to **Annotate** → add a keyframe → paint each body part → **Save keyframes.json**
 3. Go to **Segment** → download the generated `.ipynb`
 4. Upload video + `keyframes.json` + `annotation_masks.npz` to `MyDrive/Iridescence Lab/{species}/`
