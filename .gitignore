@@ -1,0 +1,17 @@
+frames/
+output/
+.humming/
+.ipynb_checkpoints/
+*.json
+*.mov
+*.mp4
+*.jpg
+*.png
+*.csv
+*.xlsx
+*.pdf
+*.npz
+
+# Allow docs/ assets committed for README
+!docs/
+!docs/**
