@@ -65,7 +65,7 @@ Hue is treated as a circular variable (0° ≡ 360°) using directional statisti
 Requires Python 3.10+. No GPU needed for local steps.
 
 ```bash
-git clone [https://github.com/YOUR_USERNAME/YOUR_REPO.git](https://github.com/parishamaheshj18/IridescenceAnalyzer.git)
+git clone https://github.com/parishamaheshj18/IridescenceAnalyzer.git
 cd IridescenceAnalyzer
 bash setup.sh
 source .humming/bin/activate
