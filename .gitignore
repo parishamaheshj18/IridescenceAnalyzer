@@ -1,0 +1,13 @@
+frames/
+output/
+.humming/
+.ipynb_checkpoints/
+*.json
+*.mov
+*.mp4
+*.jpg
+*.png
+*.csv
+*.xlsx
+*.pdf
+*.npz
