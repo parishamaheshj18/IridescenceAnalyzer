@@ -85,7 +85,7 @@ The app opens at `http://localhost:8501`.
 4. Upload video + `keyframes.json` + `annotation_masks.npz` to `MyDrive/Iridescence Lab/{species}/`
 5. Open the notebook in Colab → Runtime → T4 GPU → Run all
 6. Download `masks.npz` from Drive → upload it in the **Segment** tab
-7. Go to **Analyze** → explore charts → download CSV
+7. Go to **Analyze** → explore charts → download CSV → download Masked Video 
 
 ### Annotation tips
 - Annotate **3–6 keyframes** spread across the video, especially at frames where the bird changes angle or lighting changes significantly
