@@ -8,9 +8,9 @@ Annotate body-part regions in video → run GPU segmentation on Google Colab →
 
 ## Demo
 
-[![Iridescence Lab Demo — Violet-crowned Woodnymph](https://img.youtube.com/vi/2jDET2lUvRI/hqdefault.jpg)](https://www.youtube.com/watch?v=2jDET2lUvRI)
+![Iridescence Lab Demo — SAM 2 mask overlay on a Violet-crowned Woodnymph](docs/demo.gif)
 
-*Click to watch — SAM 2 mask overlay on a Violet-crowned Woodnymph showing per-part segmentation (crown, back, neck) across the full video.*
+*SAM 2 mask overlay showing per-part segmentation (crown, back, neck) tracked across the full video. [Full video on YouTube ↗](https://www.youtube.com/watch?v=2jDET2lUvRI)*
 
 ---
 
