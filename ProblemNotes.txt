@@ -2,3 +2,9 @@ This text keeps a log of the problems I am encountering and the solutions I am f
 1) The video I had is really low quality. and taken from a far so cropping only 400*400 just to add the humming bird might not work well with SAM 2.
 2) How do I train SAM2 to annotate the humming bird(tiny creature) when it's parts might not be visible in some frames. The pose changes very quickly in the whole video, SO I need to find a really good quality super resolution video in with higher framerate.
 
+Solved
+
+1) I need to test this software against real world iredescence data. Will have to find an open source dataset to match the readings.
+2) Document the iridescence analysis
+
+Note: We do not yet work with controlled lighting environemnt. Our videos are shot in the wild. However, even this camera-non-independent analysis can measure the relative levels of iridescence in the frame. Since we analyse different parts of the body we can analyze the relative iridescence index in the scene. For an absolute analysis we will require the spectra of illuminant, the angle of illumination and the known camera color space.

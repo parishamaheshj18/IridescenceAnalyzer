@@ -14,9 +14,10 @@ source .humming/bin/activate
 
 echo "Installing dependencies..."
 pip install --upgrade pip
-pip install jupyter opencv-python scikit-image pandas matplotlib numpy
+pip install jupyter opencv-python scikit-image pandas matplotlib numpy \
+    streamlit streamlit-image-coordinates Pillow
 
 echo ""
-echo "Setup complete. To start the notebook:"
+echo "Setup complete. To start the app:"
 echo "  source .humming/bin/activate"
-echo "  jupyter notebook hummingbird_analysis_local.ipynb"
+echo "  streamlit run app.py"
