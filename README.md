@@ -18,10 +18,10 @@ Annotate body-part regions in video → run GPU segmentation on Google Colab →
 
 ```
 ┌─────────────┐     ┌──────────────────────┐     ┌─────────────────┐
-│  1. Annotate │────▶│   2. Segment (Colab) │────▶│   3. Analyze    │
-│  Streamlit   │     │   SAM 2  •  T4 GPU   │     │   Streamlit     │
-│  freehand    │     │   ~15 min / 2600 fr  │     │   iridescence   │
-│  mask paint  │     │   → masks.npz        │     │   metrics       │
+│  1. Annotate│────▶│   2. Segment (Colab) │────▶│   3. Analyze    │
+│  Streamlit  │     │   SAM 2  •  T4 GPU   │     │   Streamlit     │
+│  freehand   │     │   ~15 min / 2600 fr  │     │   iridescence   │
+│  mask paint │     │   → masks.npz        │     │   metrics       │
 └─────────────┘     └──────────────────────┘     └─────────────────┘
 ```
 
@@ -65,8 +65,8 @@ Hue is treated as a circular variable (0° ≡ 360°) using directional statisti
 Requires Python 3.10+. No GPU needed for local steps.
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
-cd YOUR_REPO
+git clone [https://github.com/YOUR_USERNAME/YOUR_REPO.git](https://github.com/parishamaheshj18/IridescenceAnalyzer.git)
+cd IridescenceAnalyzer
 bash setup.sh
 source .humming/bin/activate
 streamlit run app.py
