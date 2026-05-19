@@ -76,7 +76,7 @@ with st.sidebar:
     with st.spinner("Extracting frames..."):
         n_frames = extract_frames(video_path, FRAMES_DIR)
     info = get_video_info(video_path)
-    st.caption(f"{info['width']}x{info['height']} @ {info['fps']:.1f} FPS  |  {n_frames} frames")
+    st.caption(f"{info['width']}x{info['height']} · {info['fps']:.1f} FPS · {n_frames} frames")
 
 # ── Annotation mask helpers ───────────────────────────────────────────────────
 def _load_ann_masks() -> dict:
@@ -446,9 +446,8 @@ with col_right:
         # Browse mode
         if ann_kf is not None:
             st.caption(
-                f"Browsing frame {frame_num}  |  "
-                f"painting frame {ann_kf['frame']} — "
-                f"move slider there to continue"
+                f"You are browsing frame {frame_num}. "
+                f"Move the slider to frame {ann_kf['frame']} to continue painting."
             )
         else:
             st.subheader("Frame browser")

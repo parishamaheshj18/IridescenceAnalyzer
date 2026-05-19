@@ -10,7 +10,7 @@ DATA_DIR = ROOT / "Data"
 DATA_DIR.mkdir(exist_ok=True)
 
 st.title("Iridescence Lab")
-st.caption("Multi-species structural color analysis  |  Annotate → Segment → Analyze")
+st.caption("Trace structural color through every body part. Paint your masks, run segmentation on Colab, then explore the iridescence data.")
 
 # ── Migration notice for existing hummingbird project ─────────────────────────
 legacy_video  = ROOT / "Hummingbird.mov"
@@ -57,10 +57,10 @@ else:
         with col:
             st.markdown(f"**{sdir.name}**")
             st.caption(
-                f"{'OK' if has_video else '--'} Video  "
-                f"{'OK' if has_kf else '--'} Annotated  "
-                f"{'OK' if has_masks else '--'} Segmented  "
-                f"{'OK' if has_csv else '--'} Analyzed"
+                f"{'✓' if has_video else '○'} Video  "
+                f"{'✓' if has_kf else '○'} Annotated  "
+                f"{'✓' if has_masks else '○'} Segmented  "
+                f"{'✓' if has_csv else '○'} Analyzed"
             )
             if st.button("Open", key=f"open_{sdir.name}"):
                 st.session_state.active_species = sdir.name

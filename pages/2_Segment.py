@@ -34,7 +34,7 @@ MASKS_PATH  = SPECIES_DIR / "masks.npz"
 video_files = (list(SPECIES_DIR.glob("*.mov")) + list(SPECIES_DIR.glob("*.mp4")) +
                list(SPECIES_DIR.glob("*.avi")) + list(SPECIES_DIR.glob("*.mkv")))
 
-st.title(f"Segment — {active}")
+st.title(f"Segment {active}")
 
 # ── Status summary ─────────────────────────────────────────────────────────────
 c1, c2, c3 = st.columns(3)
@@ -46,7 +46,7 @@ with c2:
             kfs = json.load(f)
         st.metric("Keyframes", len(kfs))
     else:
-        st.metric("Keyframes", "Missing — annotate first")
+        st.metric("Keyframes", "Not annotated yet")
 with c3:
     if MASKS_PATH.exists():
         size_mb = MASKS_PATH.stat().st_size / 1e6
@@ -59,22 +59,22 @@ st.divider()
 # ── How SAM 2 works (one-time explainer) ──────────────────────────────────────
 with st.expander("How does segmentation work?"):
     st.markdown("""
-SAM 2 (Segment Anything Model 2) is a **general-purpose** video segmentation model —
-it does not need to be retrained for each species. You simply provide a few click-based
-prompts (the coordinates you annotated), and SAM 2 propagates the masks across the whole video.
+SAM 2 (Segment Anything Model 2) is a general-purpose video segmentation model that does not
+need to be retrained for each species. You provide a few painted masks from the Annotate step,
+and SAM 2 tracks and propagates those regions across every frame of the video.
 
-**Why Colab?** SAM 2 needs a GPU. The free T4 GPU on Google Colab handles a 2600-frame
-video in ~15 minutes using the chunked approach built into the generated notebook.
+**Why Google Colab?** SAM 2 requires a GPU. The free T4 GPU on Google Colab handles a
+2600-frame video in about 15 minutes using the chunked approach built into the generated notebook.
 
 **Workflow:**
-1. Generate the notebook below → download it
-2. Upload `keyframes.json` + your video to Google Drive (`MyDrive/Iridescence Lab/{species}/`)
-3. Open the notebook in Colab, set Runtime → T4 GPU, run all cells
-4. Download `masks.npz` from Drive → upload it here
+1. Generate the notebook and download it
+2. Upload your video, `keyframes.json`, and `annotation_masks.npz` to Google Drive under `MyDrive/Iridescence Lab/{species}/`
+3. Open the notebook in Colab, switch the runtime to a T4 GPU, and run all cells
+4. Download `masks.npz` from Drive when it finishes, then upload it back here
 """)
 
 # ── Step 1: Generate Colab notebook ───────────────────────────────────────────
-st.subheader("Step 1 — Generate Colab Notebook")
+st.subheader("Step 1: Generate your Colab Notebook")
 
 if not KF_PATH.exists():
     st.warning("keyframes.json not found. Complete annotation first.")
@@ -105,18 +105,18 @@ else:
 
     ann_masks_exists = (SPECIES_DIR / "annotation_masks.npz").exists()
     st.info(
-        f"Before running in Colab, upload these files to "
+        f"Before running in Colab, upload these three files to "
         f"`MyDrive/{drive_folder}/{active}/`:  \n"
-        f"- `{video_filename}`  \n"
-        f"- `keyframes.json`  \n"
-        f"- `annotation_masks.npz`"
-        + ("  ✓ ready" if ann_masks_exists else "  ⚠ not yet painted — annotate first")
+        f"· `{video_filename}`  \n"
+        f"· `keyframes.json`  \n"
+        f"· `annotation_masks.npz`"
+        + ("  ✓ ready" if ann_masks_exists else "  ⚠ not painted yet — finish annotating first")
     )
 
 st.divider()
 
 # ── Step 2: Upload masks.npz ──────────────────────────────────────────────────
-st.subheader("Step 2 — Upload masks.npz")
+st.subheader("Step 2: Upload your masks")
 
 uploaded = st.file_uploader(
     "Upload masks.npz downloaded from Google Drive",

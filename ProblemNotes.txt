@@ -6,5 +6,7 @@ Solved
 
 1) I need to test this software against real world iredescence data. Will have to find an open source dataset to match the readings.
 2) Document the iridescence analysis
+3) How to render a material using the iridescence data from the video?
 
 Note: We do not yet work with controlled lighting environemnt. Our videos are shot in the wild. However, even this camera-non-independent analysis can measure the relative levels of iridescence in the frame. Since we analyse different parts of the body we can analyze the relative iridescence index in the scene. For an absolute analysis we will require the spectra of illuminant, the angle of illumination and the known camera color space.
+

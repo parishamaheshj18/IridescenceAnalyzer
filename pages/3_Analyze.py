@@ -41,7 +41,7 @@ with st.sidebar:
     _thr_pct = st.slider(
         "Mask quality threshold",
         min_value=5, max_value=50, value=25, step=5,
-        help="Drop masks smaller than this fraction of their median size.",
+        help="Frames where the mask is unusually small get discarded. This sets how small is too small, as a percentage of the typical mask size for that part.",
         format="%d%%",
     )
     area_threshold = _thr_pct / 100.0
@@ -52,7 +52,7 @@ MASKS_PATH  = SPECIES_DIR / "masks.npz"
 OUTPUT_DIR  = SPECIES_DIR / "output"
 PARTS_PATH  = SPECIES_DIR / "parts.json"
 
-st.title(f"Analyze — {active}")
+st.title(f"Analyze {active}")
 
 if not MASKS_PATH.exists():
     st.warning("masks.npz not found. Complete the Segment step first.")
@@ -96,7 +96,7 @@ df, metrics, interp, video_segments, parts, fps, area_data, thresholds, n_filter
 )
 
 total_slots = sum(len(v) for v in video_segments.values())
-st.caption(f"{len(df)} frames analyzed  |  {n_filtered}/{total_slots} mask slots filtered  |  {fps:.1f} FPS")
+st.caption(f"{len(df)} frames analyzed · {n_filtered}/{total_slots} low-quality masks removed · {fps:.1f} FPS")
 
 # ── Iridescence Metrics table ──────────────────────────────────────────────────
 st.subheader("Iridescence Metrics")
@@ -167,7 +167,7 @@ with tab_time:
         for ax in axes:
             ax.legend(fontsize=8)
             ax.grid(alpha=0.3)
-        plt.suptitle(f"{active} — Color Dynamics", fontsize=13, fontweight="bold")
+        plt.suptitle(f"{active}: Color Dynamics", fontsize=13, fontweight="bold")
         plt.tight_layout()
         buf = BytesIO()
         plt.savefig(buf, format="png", dpi=150)
@@ -196,7 +196,7 @@ with tab_ab:
         plt.colorbar(sc, ax=ax, label="Frame number")
         ax.set_xlabel("A*  (green — red)")
         ax.set_ylabel("B*  (blue — yellow)")
-        ax.set_title("AB Color Trajectory — Iridescence Fingerprint", fontsize=11)
+        ax.set_title("AB Color Trajectory (Iridescence Fingerprint)", fontsize=11)
         ax.axhline(0, color="gray", linewidth=0.5)
         ax.axvline(0, color="gray", linewidth=0.5)
         ax.legend(fontsize=8)
@@ -224,7 +224,7 @@ with tab_area:
         ax.axhline(thr, color="red", linestyle="--", linewidth=1.2,
                    label=f"threshold ({area_threshold:.0%} of median)")
         ax.set_ylabel("Mask area (px)")
-        ax.set_title(f"{part}  —  threshold: {thr:.0f} px")
+        ax.set_title(f"{part}  (threshold: {thr:.0f} px)")
         ax.legend(fontsize=8)
         ax.grid(alpha=0.3)
     axes[-1].set_xlabel("Frame")
