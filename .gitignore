@@ -1,6 +1,8 @@
 frames/
 output/
-.humming/
+.humming
+.*
+*.pyc
 .ipynb_checkpoints/
 *.json
 *.mov

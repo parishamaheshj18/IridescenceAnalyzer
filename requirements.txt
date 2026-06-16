@@ -6,3 +6,5 @@ pandas>=2.0.0
 matplotlib>=3.7.0
 scikit-image>=0.21.0
 Pillow>=10.0.0
+# Surface geometry (Page 5) — install separately if not already present:
+# pip install torch torchvision transformers
